@@ -2,6 +2,11 @@ Idea Proposals
 
 Idea 1: Star gazing report in your area
 
+Takes user location and find stars/constellations/planets/moons that would be good to look at on any given night.  
+Checks weather to see if its will be a clear/cloudy night.  Checks light pollution nearby.  Lists wheteher objects 
+can be seen with naked eye or needs a telescope.  Possible AR night sky finder component?  Feature that tells you
+where the best location is to view the night sky in your immediate area based on user input for how far they are 
+willing to travel.
 
 
 Idea 2: Travel
