@@ -13,5 +13,5 @@ Idea 2: Finances
 
 Reccomends different investments to add to your portfolio. Given a users portfolio, we use an API to see how to further diversify
 investments. Another API can be used to reccomend what the user should invest in in that specific market. A database is needed
-to store user profiles and information. 
+to store user profiles and information. OAuth would be needed to log into the users portfolio with a given brokerage. 
 
