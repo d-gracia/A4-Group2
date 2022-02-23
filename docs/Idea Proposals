@@ -1,1 +1,16 @@
+Idea Proposals
 
+Idea 1: Star gazing report in your area
+
+Takes user location and find stars/constellations/planets/moons that would be good to look at on any given night.  
+Checks weather to see if its will be a clear/cloudy night.  Checks light pollution nearby.  Lists wheteher objects 
+can be seen with naked eye or needs a telescope.  Possible AR night sky finder component?  Feature that tells you
+where the best location is to view the night sky in your immediate area based on user input for how far the user is 
+willing to travel.
+
+
+Idea 2: Finances
+
+Reccomends different investments to add to your portfolio. Given a users portfolio, we use an API to see how to further diversify
+investments. Another API can be used to reccomend what the user should invest in in that specific market. A database is needed
+to store user profiles and information. OAuth would be needed to log into the users portfolio with a given brokerage. 
