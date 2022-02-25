@@ -1,14 +1,14 @@
 Idea Proposals
 
-Idea 1: Star gazing report in your area
+Idea 1: Stargazing report in your area
 
-Takes user location and find stars/constellations/planets/moons that would be good to look at on any given night.  
-Checks weather API to see if its will be a clear/cloudy night.  Checks light pollution API to see what is visable.
-Lists wheteher objects can be seen with naked eye or needs a telescope.  Possible AR night sky finder component?
-Could alow easy copy paste of objects to AR app. Feature that tells you where the best location is to view the 
-night sky in your immediate area based on user input for how far the user is willing to travel. Could also give
-best time to veiw objects and best date to veiw them. Database could stores user as well as which objects they
-are interested in and their log in locations.
+Takes user location and finds stars/constellations/planets/moons that would be good to look at on any given night. 
+Checks weather API to see if it will be a clear/cloudy night.  Checks light pollution API to see what is visible. 
+Lists whether objects can be seen with the naked eye or needs a telescope.  Possible AR night sky finder component? 
+Could alow easy copy-paste of objects to AR app. A feature that tells you where the best location is to view the 
+night sky in your immediate area based on user input for how far the user is willing to travel. Could also give the 
+best time to view objects and the best date to view them. The database could store users as well as which objects they
+are interested in and their log-in locations.
 
 Some possible APIS
 http://www.sky-map.org/
@@ -18,6 +18,6 @@ https://vizier.cfa.harvard.edu/viz-bin/VizieR
 
 Idea 2: Finances
 
-Reccomends different investments to add to your portfolio. Given a users portfolio, we use an API to see how to further diversify
-investments. Another API can be used to reccomend what the user should invest in in that specific market. A database is needed
-to store user profiles and information. OAuth would be needed to log into the users portfolio with a given brokerage. 
+Recommends different investments to add to your portfolio. Given a user's portfolio, we use an API to see how to further 
+diversify investments. Another API can be used to recommend what the user should invest in that specific market. A database 
+is needed to store user profiles and information. OAuth would be needed to log into the user's portfolio with a given brokerage. 
