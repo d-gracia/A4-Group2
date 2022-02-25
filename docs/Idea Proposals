@@ -21,4 +21,9 @@ Idea 2: Finances
 
 Recommends different investments to add to your portfolio. Given a user's portfolio, we use an API to see how to further 
 diversify investments. Another API can be used to recommend what the user should invest in that specific market. A database 
-is needed to store user profiles and information. OAuth would be needed to log into the user's portfolio with a given brokerage. 
+is needed to store user profiles and information. OAuth would be needed to log into the user's portfolio with a given brokerage.
+
+Some possible APIs
+https://polygon.io/
+https://portfoliooptimizer.io/
+
