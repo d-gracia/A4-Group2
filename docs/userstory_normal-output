@@ -1,24 +1,21 @@
 
-As I user I want to be able to be told what stars/constellations/planets/moons 
-would be good to view at a given time and location. After log in (see log in user story) 
-the software will ask for time and location data to look for possible objects for the 
-user to stargaze at. If this permission has been granted, then the app automatically 
-generates suggestions based on the user’s current time and location. If not, then the 
-user has the option to enter any location/time of their choice. Suggestions can also be 
-generated based on a future time within 24 hours inputted by the user 
-(for either current location or manually inputted location) based on the future data, 
-to allow the user to see what will be visible at night if they are using the app during
-the day. Depending on the location and time given to the software, the app will return a 
-table of objects that are visbable to the user based on how likely the user will be able 
-to see the object and how popular the object is to look att. The output table will be 
-include a list of objects, the best time to view them, the RA and Dec of the object 
-(the coordinates of where it is in the sky), the hardware needed to view the object, 
-as well as magnitude of the object. There should also be an ability to search for 
-specific objects in the sky, where based on the users location and time the software 
-will output what if it is visible, when it will become visible if it isnt already 
-visible, as well as the other information in the table. The user should also be able 
-to save what objects they have viewed or save objects they are interested in. They
-will have access to their saved objects so that they can quickly search for them 
-later if they want. The suggestion should also output good spots to view the sky in 
-the area, a radius can also be inputted by the user in settings, to say how far the 
-user is able to move. These take into account light pollution and scenery (parks, etc.)
+As a user I want to be able to be told what stars/constellations/planets/moons would be good to view at a given 
+time and location. After log in (see log in user story) the software will ask for time and location data to look 
+for possible objects for the user to stargaze at. If this permission has been granted, then the app automatically 
+generates suggestions based on the user’s current time and location. If not, then the user has the option to enter 
+any location/time of their choice. 
+
+Suggestions can also be generated based on a future time inputted by the user (for either the user’s current location 
+or a manually inputted location) to allow the user to know what will be visible during a given night.  Depending on the 
+location and time given to the software, the app will return a table of objects that are visible to the user based on how 
+likely the user will be able to see the object and how popular the object is to look at.  
+
+The output table will include a list of objects, the best time to view them, the RA and Dec of the object (the coordinates 
+of where it is in the sky), the hardware needed to view the object, and the magnitude of the object. There will also be an 
+ability to search for specific objects in the sky, where based on the user's location and time, the software will output if 
+it is visible, when it will become visible if it isn't already, as well as the other information in the table. The user will 
+also be able to save what objects they have viewed or save objects they are interested in viewing. They will have access to 
+their saved objects so that they can quickly search for them later if they want. The suggestion should also output good spots 
+to view the sky in the area.  A radius can also be inputted by the user in settings, to say how far the user is able to move. 
+These take into account light pollution and scenery (parks, etc.)
+
