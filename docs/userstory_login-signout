@@ -1,1 +1,15 @@
+  As a user, I want to log in to my account to store what locations I have observed at and what objects I have tried to view. 
+I want to be able to log into the software with my username and password, or use OAuth to log in. The user's account is used to 
+maintain preferences of the user, as well as storing what objects the user wants to view/ has viewed in a database. Logging in 
+will also allow the software to access the user's location and time to output objects (refer to other user stories on how location 
+and time will be used). 
+
+  Login in to the application with your username and password.  If you do not have an account already, sign up for one. Signing up will 
+consister of picking a username/email address that is not already being used by another user, as well as a password. There should also 
+be a way to create an account by signing in with a third party account like Google or Facebook using OAuth. If the username/email is 
+already registered the account will not be allowed to be made. If you are having trouble logging in, click the “forgot username/password” 
+button for assistance. An email will be sent to the given email to reset your password. 
+
+  Upon successful login, you will be brought to the applications home page.  When you are done with your session, be sure to logout properly 
+by clicking the “logout” button. Upon successful logout, you will be brought to the login page.
 
