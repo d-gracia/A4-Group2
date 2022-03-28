@@ -1,13 +1,18 @@
 
-As the software I want to know what hardware the user has to be able 
-to tell what objects they will be able to see. When looking for visible 
-objects to return to the objects to the user, I will look at the magnitude
-of the objects that would be in the sky at the time the user specifies. 
-Depending on the magnitude of the object I will determine what hardware the 
-user will need to see the object. When I return the table to the user I will 
-include what they will need to see objects on the table, i.e. their eyes, 
-binoculars, a hobbyist telescope, a scientific telescope. 
+This user story is necessary because users will want and 
+need to know what hardware they need to view certain objects 
+in the night sky.
 
-During a regular query (check normal use user story), hardware that is 
-required to view an object should be listed next to each object by default.
-To only see objects that can be viewed with certain hardware, set a hardware filter during a regular user query. 
+As a user, I want to know what hardware I need to see certain 
+objects.  When picking objects to return to the user, the app 
+will check the magnitude of the objects that would be in the 
+sky at the time the user specifies. Depending on the magnitude 
+of the object the app will determine what hardware the user will 
+need to see the object. When the app returns a table to the user, 
+it will include what hardware is needed to see each object on the 
+table (eyes, binoculars, a hobbyist telescope, a scientific telescope, etc.). 
+
+During a regular query (check normal output user story), 
+hardware that is required to view an object should be listed next
+to each object by default.  To only see objects that can be viewed 
+with certain hardware, set a hardware filter during a regular user query. 
