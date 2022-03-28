@@ -1,1 +1,11 @@
 
+This user story is necessary so the user can get a list 
+of visible objects in their location or a specific location.
+
+The app will need the time and location of the user, either 
+by taking the user’s location data, or from the user inputting 
+a time and location. The app will use this to calculate what 
+objects are visible in the night sky at that time and location. 
+The app can then use the list of possible objects as well as data 
+from weather and light pollution apis to find what objects would be 
+optimal for viewing at the time and location. 
