@@ -1,1 +1,15 @@
+In order to maximize user experience of viewing desired constellations and stars, checking if conditions nearby 
+are conducive to the outcome is imperative. Light pollution in the area will be checked to determine what objects 
+are visible. Additionally, providing direct access to weather data in the desired location will allow for the user 
+to determine if they would like to go view the objects. Recommendations will be made as to when the user should view 
+certain objects. 
+
+The app can then look for locations where there are better viewing conditions, such as better weather and less light 
+pollution. The location can then be given to the user via google maps. The app will also look for the best time to view 
+objects by seeing when they would be visible in the night sky and again checking other APIs to check for a time with 
+better conditions.
+
+To see the light pollution in a given area, start a light pollution query.  Search for light pollution by place name 
+(city/town/etc.) or by coordinates in latitude, longitude format.  To check the weather in your area, start a weather query.  
+To enable notifications for good seeing conditions, set a notification with necessary weather conditions filters.
 
