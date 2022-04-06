@@ -11,6 +11,7 @@ best time to view objects and the best date to view them. The database could sto
 are interested in and their log-in locations.
 
 Some possible APIS
+http://simbad.cds.unistra.fr/guide/sim-url.htx
 http://www.sky-map.org/
 https://vizier.cfa.harvard.edu/viz-bin/VizieR
 https://stellarium-web.org/
