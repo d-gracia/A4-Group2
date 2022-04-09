@@ -93,6 +93,34 @@ other interesting returns
 
 
 
+
+
+"""
+return lon lat from zipcode
+"""
+
+postalCode =  "02215" #input the zipcode you want here
+
+map_url="https://dev.virtualearth.net/REST/v1/Locations/US/"+postalCode+"?&key=Ag8WDTJmVQA6MknifiagqrnEH1AaAv3ce03GeTcN2rYX7mbqzxzG31hX0MChiZlC"
+
+map = requests.get(map_url)
+
+#print(map.json())  #prints out entire responce
+print("\n")
+print(map.json()['resourceSets'][0]["resources"][0]['bbox'][0]) #prints out just the 'latitude' value
+print(map.json()['resourceSets'][0]["resources"][0]['bbox'][1]) #prints out just the 'longitude' value
+print("\n")
+
+
+
+
+
+
+
+
+
+
+
 """
 Return visable based on location
 
