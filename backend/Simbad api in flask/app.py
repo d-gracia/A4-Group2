@@ -1,6 +1,7 @@
 """
 app.py
-changes made: Now this file can get data from Simbad api with user input vlaues.
+This file allows to get data from Simbad api with user input values.
+The results are passed and displayed to a webpage.
 
 This file uses two rendering templates: 
   -index.html 
