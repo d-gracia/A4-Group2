@@ -1,0 +1,19 @@
+
+For our prototype we chose to use Flask for the backend and React for the
+frontend.
+
+For the back end we were considering using Django as it was python based
+and has lots of useful intigrations. Ultimately we wanted something 
+python based as it was the language that all of us were comfortable using
+and could most easily collaborate in. While considering how we would 
+connect the front end and back end we decided that we wanted to use Axios
+to link our front and back end. In talking with Dev he told us that he 
+knew that Axios worked with Flask, which was also python based. We looked
+into Flask and decided that it would be better for our group, as it had 
+well documented examples of how to use Axios to link it, it was python 
+based, and it seemed better suited for smaller applications.
+
+For the back end we wanted to use javascript. We did not want to use 
+typescipt as none of use were comfortable with it. We looked at both 
+Vue.JS and React. In the end we chose React as it there was a lot of 
+documentation on how to connect Flask to React.
