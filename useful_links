@@ -5,3 +5,7 @@ How To Process Incoming Request Data in Flask: https://www.digitalocean.com/comm
 How To Use Axios with React: https://www.digitalocean.com/community/tutorials/react-axios-react
 
 Some possibily helpful backend functions   https://flask.palletsprojects.com/en/0.12.x/quickstart/#the-request-object
+
+Dev github: https://github.com/dbhatia00/cs411_gitTutorial/blob/master/sendTesting/flask_react/src/App.js
+
+OAuth with npm: https://www.npmjs.com/package/react-google-login
