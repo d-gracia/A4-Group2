@@ -1,0 +1,36 @@
+A file to explain how to work from a local git repository
+
+(Hopefully I got all of the steps)
+
+
+Open terminal
+Go to the location where you want to local repo
+
+git clone https://github.com/d-gracia/A4-Group2.git
+
+cd A4-Group2     
+
+git remote add origin https://github.com/d-gracia/A4-Group2.git
+
+
+git commit -m "initial commit"     
+(This may or may not be needed)
+
+
+
+
+To push an update
+
+git add (name of file)
+
+git commit -m "name of the commit"
+
+git push origin main   
+
+
+
+To update local
+
+git fetch    
+
+git merge origin    
