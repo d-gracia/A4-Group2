@@ -5,7 +5,6 @@ import './App.css';
 
 function App() {
 
-   // new line start
   const [profileData, setProfileData] = useState(null)
 
   function getData() {
@@ -15,18 +14,41 @@ function App() {
     })
     .then((response) => {
       const res =response.data
-	console.log(res);
+	    console.log(res);
       setProfileData(({
         profile_name: res.name,
-        about_me: res.about}))
+        about_me: res.about,
+        balls: res.balls,
+        weather: res.weather,
+        third: res.third}))
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
         console.log(error.response.status)
         console.log(error.response.headers)
         }
-    })}
-    //end of new line 
+  })}
+
+  function handlePostQuery(query){
+
+    var myParams = {
+        data: query
+    }
+
+    if (query != "") {
+        axios.post('/profile', myParams)
+            .then(function(response){
+                console.log(response);
+        //Perform action based on response
+        })
+        .catch(function(error){
+            console.log(error);
+        //Perform action based on error
+        });
+    } else {
+        alert("The search query cannot be empty")
+    }
+  }
 
   return (
     <div className="App">
@@ -44,14 +66,22 @@ function App() {
           Learn React
         </a>
 
-        {/* new line start*/}
         <p>To get your profile details: </p><button onClick={getData}>Click me</button>
         {profileData && <div>
               <p>Profile name: {profileData.profile_name}</p>
               <p>About me: {profileData.about_me}</p>
+              <p>Balls: {profileData.balls}</p>
+              <p>Current Weather: {profileData.weather}</p>
+              <p>Third: {profileData.third}</p>
             </div>
         }
-         {/* end of new line */}
+        <form>
+          <label>
+            Longitude:
+            <input type="text" name="name" />
+          </label>
+          <button onClick={handlePostQuery("name")}>Submit</button>
+        </form>
       </header>
     </div>
   );
