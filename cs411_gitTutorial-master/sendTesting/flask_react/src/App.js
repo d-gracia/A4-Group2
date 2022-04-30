@@ -2,10 +2,14 @@ import { useState } from 'react'
 import axios from "axios";
 import logo from './logo.svg';
 import './App.css';
+import MyForm from './practice_post';
 
 function App() {
 
   const [profileData, setProfileData] = useState(null)
+  const headers = {
+    'Content-Type': 'text/plain;charset=utf-8'
+  }
 
   function getData() {
     axios({
@@ -34,21 +38,24 @@ function App() {
     var myParams = {
         data: query
     }
-
-    if (query != "") {
-        axios.post('/profile', myParams)
+    // myParams.data = "temp"
+    console.log(myParams.data)
+    if (query !== "") {
+        axios.post('/profile', myParams, {
+          headers: headers
+        })
             .then(function(response){
                 console.log(response);
-        //Perform action based on response
+       //Perform action based on response
         })
         .catch(function(error){
             console.log(error);
-        //Perform action based on error
+       //Perform action based on error
         });
     } else {
         alert("The search query cannot be empty")
     }
-  }
+}
 
   return (
     <div className="App">
@@ -72,7 +79,7 @@ function App() {
               <p>About me: {profileData.about_me}</p>
               <p>Balls: {profileData.balls}</p>
               <p>Current Weather: {profileData.weather}</p>
-              <p>Third: {profileData.third}</p>
+              <p>Example Post: {profileData.third}</p>
             </div>
         }
         <form>
@@ -80,11 +87,11 @@ function App() {
             Longitude:
             <input type="text" name="name" />
           </label>
-          <button onClick={handlePostQuery("name")}>Submit</button>
+          <button onClick={handlePostQuery('name')}>Submit</button>
         </form>
       </header>
     </div>
   );
 }
 
-export default App;
+export default MyForm;
