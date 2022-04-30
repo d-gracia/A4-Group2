@@ -13,7 +13,7 @@ function POST(path, data) {
 }
 
 function MyForm(props) {
-  const [text, setText] = useState('Input your name here');
+  const [text, setText] = useState('Input your zipcode here');
   const [name, setName] = useState('');
 
   const onChange = e => {
