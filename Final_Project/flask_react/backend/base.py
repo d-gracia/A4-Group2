@@ -36,6 +36,12 @@ def testPost():
     # weatherd= weather.json()["hourly"][5]["weather"][0]["description"] + " " + weather.json()["hourly"][0]["weather"][0]["description"]
     print("\n" + "Current Weather: " + weather.json()["current"]["weather"][0]["description"] + "\n")
 
+    req = requests.get('http://simbad.u-strasbg.fr/simbad/sim-coo?output.format=ASCII&Coord=12%2030%20%2b10%2020&Radius=5&Radius.unit=arcmin')
+    print(req)
+    simbad = req.content
+    print(str(simbad))
+    print(simbad[1])
+
     return jsonify(name=weatherd)
 
 
