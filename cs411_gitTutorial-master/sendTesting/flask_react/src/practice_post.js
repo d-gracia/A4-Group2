@@ -32,14 +32,16 @@ function MyForm(props) {
   }
 
   return (
-    <div>
-    <form>
+    <div className="App">
+    <header className="App-header">
+    <form className="Form">
        
     <label>Input</label>
     <input value={text} onChange={onChange} />
     <input type="submit" value="Submit" onClick={onClick} />
     </form>
-    <p>Your name is: <b>{name}</b></p>
+    <p>Current Weather is: <b>{name}</b></p>
+    </header>
     </div>
   )
 
