@@ -31,10 +31,6 @@ def testPost():
     weatherd= weather.json()["current"]["weather"][0]["description"]
     print("\n" + "Current Weather: " + weather.json()["current"]["weather"][0]["description"] + "\n")
 
-    
-    # print(data)
-
-    # return jsonify(name=name)
     return jsonify(name=weatherd)
 
 
@@ -43,21 +39,6 @@ cors = CORS(app, resources={'/*':{'origins': 'http://localhost:3000'}})
 
 if __name__ == "__main__":
     app.run()
-
-
-# from flask import Flask
-
-# api = Flask(__name__)
-
-# @app.route('/profile')
-# def my_profile():
-#     response_body = {
-#         "name": "David",
-#         "about": "Food",
-#         "balls": "1"
-#     }
-
-#     return response_body
 
 """
 app.py
@@ -71,14 +52,6 @@ This file uses two rendering templates:
   -layout.html
 
 """
-
-# app = Flask(__name__)
-
-# @app.route('/profile', methods = ['POST'])
-# def get_query_from_react():
-#     name = request.get_json()
-#     print(name)
-#     return name
 
 @app.route("/profile", methods=['GET'])
 def index():
