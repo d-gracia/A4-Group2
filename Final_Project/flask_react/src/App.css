@@ -15,10 +15,10 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: left;
   justify-content: center;
-  font-size: calc(15px + 2vmin);
-  color: rgb(255, 255, 255);
+  font-size: calc(7px + 1.2vmin);
+  color: rgb(58, 182, 102);
 }
 
 .welcome {

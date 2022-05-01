@@ -25,10 +25,15 @@ def testPost():
     lat = str(map.json()['resourceSets'][0]["resources"][0]['bbox'][0])
     lon = str(map.json()['resourceSets'][0]["resources"][0]['bbox'][1])
 
-    weather_exclude = "minutely,hourly,daily,alerts" 
+    weather_exclude = "minutely,daily,alerts" 
     weather_api_url = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude="+weather_exclude+"&appid=0f4cf3136e2801a4208f7b57cada4f2b"
     weather = requests.get(weather_api_url)
-    weatherd= weather.json()["current"]["weather"][0]["description"]
+    i = 0
+    weatherd = ""
+    while i < 48:
+        weatherd = weatherd + "Weather in " + str(i) + " hour(s): " + weather.json()["hourly"][i]["weather"][0]["description"] + ".  "
+        i += 1
+    # weatherd= weather.json()["hourly"][5]["weather"][0]["description"] + " " + weather.json()["hourly"][0]["weather"][0]["description"]
     print("\n" + "Current Weather: " + weather.json()["current"]["weather"][0]["description"] + "\n")
 
     return jsonify(name=weatherd)

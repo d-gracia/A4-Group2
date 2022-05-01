@@ -18,7 +18,7 @@ function POST(path, data) {
 }
 
 function App(props) {
-  const [text, setText] = useState('Enter your zipcode here');
+  const [text, setText] = useState('');
   const [name, setName] = useState('');
 
   const onChange = e => {
@@ -46,11 +46,11 @@ function App(props) {
         <GoogleLoginComponent />
     </div>
        
-    {/* <label>Input</label> */}
+    <label>Enter Your Zip/Postal code here ~~~ </label>
     <input value={text} onChange={onChange} />
     <input type="submit" value="Submit" onClick={onClick} />
     </form>
-    <p>Current Weather: <b>{name}</b></p>
+    <p>Hourly Weather Report for the next 48 hours: <b>{name}</b></p>
     </header>
     </div>
     )
