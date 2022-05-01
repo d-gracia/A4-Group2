@@ -1,97 +1,52 @@
 import { useState } from 'react'
 import axios from "axios";
-import logo from './logo.svg';
 import './App.css';
-import MyForm from './practice_post';
 
-function App() {
+function POST(path, data) {
+  return fetch(`http://localhost:5000${path}`,
+  {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }
+  )
+}
 
-  const [profileData, setProfileData] = useState(null)
-  const headers = {
-    'Content-Type': 'text/plain;charset=utf-8'
+function App(props) {
+  const [text, setText] = useState('Input your zipcode here');
+  const [name, setName] = useState('');
+
+  const onChange = e => {
+    setText(e.target.value)
   }
 
-  function getData() {
-    axios({
-      method: "GET",
-      url:"/profile",
-    })
-    .then((response) => {
-      const res =response.data
-	    console.log(res);
-      setProfileData(({
-        profile_name: res.name,
-        about_me: res.about,
-        balls: res.balls,
-        weather: res.weather,
-        third: res.third}))
-    }).catch((error) => {
-      if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-        }
-  })}
-
-  function handlePostQuery(query){
-
-    var myParams = {
-        data: query
-    }
-    // myParams.data = "temp"
-    console.log(myParams.data)
-    if (query !== "") {
-        axios.post('/profile', myParams, {
-          headers: headers
-        })
-            .then(function(response){
-                console.log(response);
-       //Perform action based on response
-        })
-        .catch(function(error){
-            console.log(error);
-       //Perform action based on error
-        });
-    } else {
-        alert("The search query cannot be empty")
-    }
-}
+  const onClick = e => {
+    e.preventDefault();
+    POST('/post', {name: text}).then(
+      async (resp) => {
+        const json= await resp.json()
+        console.log(json.name)
+        setName(json.name)
+      }
+    )
+  }
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-
-        <p>To get your profile details: </p><button onClick={getData}>Click me</button>
-        {profileData && <div>
-              <p>Profile name: {profileData.profile_name}</p>
-              <p>About me: {profileData.about_me}</p>
-              <p>Balls: {profileData.balls}</p>
-              <p>Current Weather: {profileData.weather}</p>
-              <p>Example Post: {profileData.third}</p>
-            </div>
-        }
-        <form>
-          <label>
-            Longitude:
-            <input type="text" name="name" />
-          </label>
-          <button onClick={handlePostQuery('name')}>Submit</button>
-        </form>
-      </header>
+    <header className="App-header">
+    <form className="Form">
+       
+    <label>Input</label>
+    <input value={text} onChange={onChange} />
+    <input type="submit" value="Submit" onClick={onClick} />
+    </form>
+    <p>Current Weather is: <b>{name}</b></p>
+    </header>
     </div>
-  );
+  )
+
 }
 
-export default MyForm;
+export default App;
