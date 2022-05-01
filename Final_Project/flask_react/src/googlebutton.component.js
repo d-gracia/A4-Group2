@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 
 const CLIENT_ID =   
-  "24936484537-5l2ont20g204dtokinbdqq4lktaaq7so.apps.googleusercontent.com";
+  "239855063895-e9ogr77ne089crdv675k8antmal00r6l.apps.googleusercontent.com";
 
 class GoogleLoginComponent extends Component {
   constructor() {

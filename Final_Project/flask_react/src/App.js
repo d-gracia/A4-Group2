@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import axios from "axios";
 import './App.css';
+import { Component } from "react";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import GoogleLoginComponent from "./googlebutton.component";
 
 function POST(path, data) {
   return fetch(`http://localhost:5000${path}`,
@@ -34,9 +37,15 @@ function App(props) {
   }
 
   return (
+    
     <div className="App">
     <header className="App-header">
     <form className="Form">
+
+    <div className="Auth">
+        <h2>React Google Login Example</h2>
+        <GoogleLoginComponent />
+    </div>
        
     <label>Input</label>
     <input value={text} onChange={onChange} />
@@ -45,8 +54,7 @@ function App(props) {
     <p>Current Weather is: <b>{name}</b></p>
     </header>
     </div>
-  )
-
+    )
 }
 
 export default App;

@@ -2,7 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Component } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import GoogleLoginComponent from "./googlebutton.component";
+import GoogleLoginComponent from "./Final_Project/flask_react/src/googlebutton.component";
 
 class App extends Component {
 
