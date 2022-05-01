@@ -1,6 +1,6 @@
 // https://www.freakyjolly.com/google-signin-login-button-in-react-js-example-using-react-google_login-package/
 
-
+import './App.css';
 import React, { Component } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 
@@ -50,6 +50,7 @@ class GoogleLoginComponent extends Component {
         <div className="col-md-12">
           {this.state.isLoggedIn ? (
             <div>
+              
               <h1>Welcome, {this.state.userInfo.name}</h1>
 
               <GoogleLogout

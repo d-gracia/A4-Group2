@@ -18,7 +18,7 @@ function POST(path, data) {
 }
 
 function App(props) {
-  const [text, setText] = useState('Input your zipcode here');
+  const [text, setText] = useState('Enter your zipcode here');
   const [name, setName] = useState('');
 
   const onChange = e => {
@@ -43,15 +43,14 @@ function App(props) {
     <form className="Form">
 
     <div className="Auth">
-        <h2>React Google Login Example</h2>
         <GoogleLoginComponent />
     </div>
        
-    <label>Input</label>
+    {/* <label>Input</label> */}
     <input value={text} onChange={onChange} />
     <input type="submit" value="Submit" onClick={onClick} />
     </form>
-    <p>Current Weather is: <b>{name}</b></p>
+    <p>Current Weather: <b>{name}</b></p>
     </header>
     </div>
     )
