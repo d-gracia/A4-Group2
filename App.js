@@ -37,6 +37,8 @@ function App(props) {
   const [text, setText] = useState('');
   const [name, setName] = useState('');
   const [name2, setName2] = useState('');
+  const [name3, setName3] = useState('');
+
 
   const onChange = e => {
     setText(e.target.value)
@@ -57,6 +59,14 @@ function App(props) {
         const json= await resp.json()
         console.log(json.name2)
         setName2(json.name2)
+      }
+    )
+
+    POST('/post3', {name3: text}).then(
+      async (resp) => {
+        const json= await resp.json()
+        console.log(json.name3)
+        setName3(json.name3)
       }
     )
   }
@@ -92,7 +102,8 @@ function App(props) {
             </tr>
           )
         })}
-      </table>  
+      </table> 
+    <p>Viewing Reccomendation:<b>{name3}</b> </p>   
     </header>
     </div>
     )
