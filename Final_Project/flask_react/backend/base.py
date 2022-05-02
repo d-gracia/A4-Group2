@@ -20,16 +20,20 @@ def testPost():
     # current_app.logger.debug(input)
     # print("\n" + "Input: " + input)
 
+    # Put the zipcode searched into the mongo database
+    # the certificate is locally stored for security reasons
     uri = "mongodb+srv://cluster0.2tsfg.mongodb.net/api_key_test?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
     client = MongoClient(uri,
                         tls=True,
-                        tlsCertificateKeyFile='/Users/davidgracia/A4-Group2/Final_Project/flask_react/backend/admin_user.pem',
+                        tlsCertificateKeyFile='/Users/davidgracia/admin_user.pem',
                         server_api=ServerApi('1'))
     db = client['api_key_test']
     collection = db['weather_test']
     collection.insert_one({"Zipcode": zip})
 
     # db.key.insert_one ({ "_id": 10, "item": "box", "qty": 20 })
+
+
 
     postalCode = str(zip)
     map_url="https://dev.virtualearth.net/REST/v1/Locations/US/"+postalCode+"?&key=Ag8WDTJmVQA6MknifiagqrnEH1AaAv3ce03GeTcN2rYX7mbqzxzG31hX0MChiZlC"
@@ -100,6 +104,23 @@ def testPost2():
     
     return jsonify(zip2=simbad)
 
+@app.post('/user_data')
+def user_data():
+    email = request.json.get('email')
+    current_app.logger.debug(email)
+    print(email)
+
+    # Put the user data into the mongo database
+    uri = "mongodb+srv://cluster0.2tsfg.mongodb.net/api_key_test?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
+    client = MongoClient(uri,
+                        tls=True,
+                        tlsCertificateKeyFile='/Users/davidgracia/A4-Group2/Final_Project/flask_react/backend/admin_user.pem',
+                        server_api=ServerApi('1'))
+    db = client['api_key_test']
+    collection = db['user_data']
+    collection.insert_one({"EmailID": email})
+
+    return jsonify(email=email)
 
 # because backend and frontend use different ports, we have to enable cross-origin requests
 cors = CORS(app, resources={'/*':{'origins': 'http://localhost:3000'}}) 

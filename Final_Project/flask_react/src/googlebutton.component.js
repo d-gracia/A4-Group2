@@ -7,6 +7,18 @@ import { GoogleLogin, GoogleLogout } from "react-google-login";
 const CLIENT_ID =   
   "239855063895-e9ogr77ne089crdv675k8antmal00r6l.apps.googleusercontent.com";
 
+function POST(path, data) {
+  return fetch(`http://localhost:5000${path}`,
+  {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    }
+  )
+}
+
 class GoogleLoginComponent extends Component {
   constructor() {
     super();
@@ -27,6 +39,8 @@ class GoogleLoginComponent extends Component {
       emailId: response.profileObj.email,
     };
     this.setState({ userInfo, isLoggedIn: true });
+    // POST('/user_data', {"name": name})
+    POST('/user_data', {email: this.state.userInfo.emailId})
   };
 
   // Error Handler
@@ -52,6 +66,7 @@ class GoogleLoginComponent extends Component {
             <div>
               
               <h1>Welcome, {this.state.userInfo.name}</h1>
+
 
               <GoogleLogout
                 clientId={CLIENT_ID}
