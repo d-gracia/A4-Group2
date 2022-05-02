@@ -1,3 +1,4 @@
+# %%
 import requests #use to get data from apis
 
 lat="42.360081"
@@ -23,11 +24,11 @@ ra > 15 & ra < 30
 """
 
 
-ramin=  "-10"
-ramax = "20"
-decmin = "80"
+ramin=  "0"
+ramax = "100"
+decmin = "0"
 decmax = "100"
-limitingmag = "8"
+limitingmag = "6"
 sky_api_url="http://simbad.u-strasbg.fr/simbad/sim-sam?Criteria=ra+%3E+"+ramin+"+%26+ra+%3C+"+ramax+"%0D%0A%26+dec+%3E+"+decmin+"+%26+dec+%3C+"+decmax+"%0D%0A%26+Vmag+%3C+"+limitingmag+"&submit=submit+query&OutputMode=LIST&maxObject=2000&output.format=ASCII"
 
 #sky_api_url="https://simbad.u-strasbg.fr/simbad/sim-sam?Criteria=Vmag<6&region(circle,ICRS,J2000,12 31 %2B10 20,5d)&submit=submit+query&OutputMode=LIST&maxObject=2000&output.format=ASCII"
@@ -72,7 +73,7 @@ for i in range(object_list_len):
         test = objects[i].split('|')
         box[i][j] = test[j]
 
-        
+# %% 
 print(lines[9])
 print()
 
@@ -80,3 +81,7 @@ for i in range(object_list_len):
     print(box[i][1])
 
 
+
+# %%
+print(object_list_len)
+# %%

@@ -4,6 +4,17 @@ import requests
 import json
 from flask import Flask, request, jsonify, current_app
 from flask_cors import CORS
+from pymongo import MongoClient
+from pymongo.server_api import ServerApi
+
+uri = "mongodb+srv://cluster0.2tsfg.mongodb.net/api_key_test?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
+
+client = MongoClient(uri, tls=True, tlsCertificateKeyFile='/Users/davidgracia/A4-Group2/Final_Project/flask_react/backend/admin_user.pem', server_api=ServerApi('1'))
+db = client['api_key_test']
+collection = db['key']
+
+doc_count = collection.count_documents({})
+print(doc_count)
 
 app = Flask(__name__)
 
@@ -12,6 +23,9 @@ def testPost():
     name = request.json.get('name')
     current_app.logger.debug(name)
     print("\n" + "Input: " + name)
+    # input = request.json.get('input')
+    # current_app.logger.debug(input)
+    # print("\n" + "Input: " + input)
 
     postalCode = str(name)
     map_url="https://dev.virtualearth.net/REST/v1/Locations/US/"+postalCode+"?&key=Ag8WDTJmVQA6MknifiagqrnEH1AaAv3ce03GeTcN2rYX7mbqzxzG31hX0MChiZlC"
@@ -36,13 +50,49 @@ def testPost():
     # weatherd= weather.json()["hourly"][5]["weather"][0]["description"] + " " + weather.json()["hourly"][0]["weather"][0]["description"]
     print("\n" + "Current Weather: " + weather.json()["current"]["weather"][0]["description"] + "\n")
 
-    req = requests.get('http://simbad.u-strasbg.fr/simbad/sim-coo?output.format=ASCII&Coord=12%2030%20%2b10%2020&Radius=5&Radius.unit=arcmin')
-    print(req)
-    simbad = req.content
-    print(str(simbad))
-    print(simbad[1])
+    ramin=  "0"
+    ramax = "100"
+    decmin = "0"
+    decmax = "100"
+    limitingmag = "6"
+    sky_api_url="http://simbad.u-strasbg.fr/simbad/sim-sam?Criteria=ra+%3E+"+ramin+"+%26+ra+%3C+"+ramax+"%0D%0A%26+dec+%3E+"+decmin+"+%26+dec+%3C+"+decmax+"%0D%0A%26+Vmag+%3C+"+limitingmag+"&submit=submit+query&OutputMode=LIST&maxObject=2000&output.format=ASCII"
+    skyreturn = requests.get(sky_api_url)
+    skyresponse = skyreturn.text
 
-    return jsonify(name=weatherd)
+    lines = skyresponse.split('\n')
+
+    object_list_len = int(lines[7][20:])
+
+    print()
+    print(object_list_len)
+
+    objects = lines[11:-3]
+
+    box = [ [None]*(13) for k in range(object_list_len)]
+
+    for i in range(object_list_len):
+        for j in range(12):
+            test = objects[i].split('|')
+            box[i][j] = test[j]
+
+    print(lines[9])
+    print()
+
+    starlist = ""
+    # 1 for ident, 3 for coords, 6 for V-Mag
+    for i in range(40):
+        print(box[i][1])
+        starlist = starlist + str(box[i][1])
+
+    return jsonify(name=starlist)
+
+@app.post('/post')
+def test():
+    input = request.json.get('input')
+    current_app.logger.debug(input)
+    print(input)
+
+    return jsonify(input=input)
 
 
 # because backend and frontend use different ports, we have to enable cross-origin requests

@@ -20,6 +20,7 @@ function POST(path, data) {
 function App(props) {
   const [text, setText] = useState('');
   const [name, setName] = useState('');
+  const [input, setInput] = useState('');
 
   const onChange = e => {
     setText(e.target.value)
@@ -32,6 +33,8 @@ function App(props) {
         const json= await resp.json()
         console.log(json.name)
         setName(json.name)
+        console.log(json.input)
+        setInput(json.input)
       }
     )
   }
@@ -45,7 +48,9 @@ function App(props) {
     <div className="Auth">
         <GoogleLoginComponent />
     </div>
-       
+    {/* <div>
+    <input value={input} onChange={onChange} />
+    </div> */}
     <label>Enter Your Zip/Postal code here ~~~ </label>
     <input value={text} onChange={onChange} />
     <input type="submit" value="Submit" onClick={onClick} />
