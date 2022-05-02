@@ -17,6 +17,22 @@ function POST(path, data) {
   )
 }
 
+function callData(str) {
+  var data = [];
+  var parseArray = str.split('_')
+  let i = 0
+  while (i < parseArray.length) {
+    var dict = {};
+    dict['name']=parseArray[i]
+    dict['coord']=parseArray[i+1]
+    dict['mag']=parseArray[i+2]
+    data.push(dict)
+    i=i+3
+  }
+ 
+  return data
+}
+
 function App(props) {
   const [text, setText] = useState('');
   const [name, setName] = useState('');
@@ -60,14 +76,14 @@ function App(props) {
     <input type="submit" value="Submit" onClick={onClick} />
     </form>
     <p>Hourly Weather Report for the next 48 hours: <b>{name}</b></p>
-    <p>Objects that can be seen: <b>{name2}</b></p>
-      {/* <table>
+    <p>Objects that can be seen: </p>
+      <table>
         <tr>
           <th>Name</th>
           <th>Coordinate</th>
           <th>Magnitude</th>
         </tr>
-        {json.loads(name2).map((val, key) => {
+        {callData(name2).map((val, key) => {
           return (
             <tr key={key}>
               <td>{val.name}</td>
@@ -76,7 +92,7 @@ function App(props) {
             </tr>
           )
         })}
-      </table> */}
+      </table>  
     </header>
     </div>
     )

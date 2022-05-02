@@ -63,13 +63,9 @@ def testPost2():
             box[i][j] = test[j]
     
     
-    # dictionary = {}
-    # for i in range(object_list_len):
-    #     obj = {'name': box[i][1], 'coord': box[i][3], 'mag': box[i][6]}
-    #     dictionary.update(obj)
     simbad = ""
     for i in range(object_list_len):
-        simbad = simbad+"name: "+(box[i][1])+"coord: "+(box[i][3])+"mag: "+(box[i][6])
+        simbad = simbad+(box[i][1])+"_"+(box[i][3])+"_"+(box[i][6])+"_"
     
     return jsonify(name2=simbad)
     
