@@ -66,49 +66,43 @@ def testPost():
     # weatherd= weather.json()["hourly"][5]["weather"][0]["description"] + " " + weather.json()["hourly"][0]["weather"][0]["description"]
     print("\n" + "Current Weather: " + weather.json()["current"]["weather"][0]["description"] + "\n")
 
+    return jsonify(zip=weatherd)
+
+@app.post('/post2')
+def testPost2():
+    name2 = request.json.get('name2')
+    current_app.logger.debug(name2)
+    
+    # Simbad API
     ramin=  "0"
-    ramax = "100"
+    ramax = "20"
     decmin = "0"
-    decmax = "100"
+    decmax = "20"
     limitingmag = "6"
-    sky_api_url="http://simbad.u-strasbg.fr/simbad/sim-sam?Criteria=ra+%3E+"+ramin+"+%26+ra+%3C+"+ramax+"%0D%0A%26+dec+%3E+"+decmin+"+%26+dec+%3C+"+decmax+"%0D%0A%26+Vmag+%3C+"+limitingmag+"&submit=submit+query&OutputMode=LIST&maxObject=2000&output.format=ASCII"
-    skyreturn = requests.get(sky_api_url)
-    skyresponse = skyreturn.text
-
+    
+    req = requests.get("http://simbad.u-strasbg.fr/simbad/sim-sam?Criteria=ra+%3E+"+ramin+"+%26+ra+%3C+"+ramax+"%0D%0A%26+dec+%3E+"+decmin+"+%26+dec+%3C+"+decmax+"%0D%0A%26+Vmag+%3C+"+limitingmag+"&submit=submit+query&OutputMode=LIST&maxObject=2000&output.format=ASCII")
+    skyresponse  = req.text
     lines = skyresponse.split('\n')
-
     object_list_len = int(lines[7][20:])
-
-    print()
-    print(object_list_len)
-
     objects = lines[11:-3]
-
+    
     box = [ [None]*(13) for k in range(object_list_len)]
-
     for i in range(object_list_len):
         for j in range(12):
             test = objects[i].split('|')
             box[i][j] = test[j]
-
-    print(lines[9])
-    print()
-
-    starlist = ""
+    
+    
+    # dictionary = {}
+    # for i in range(object_list_len):
+    #     obj = {'name': box[i][1], 'coord': box[i][3], 'mag': box[i][6]}
+    #     dictionary.update(obj)
+    simbad = ""
     # 1 for ident, 3 for coords, 6 for V-Mag
-    for i in range(40):
-        print(box[i][1])
-        starlist = starlist + str(box[i][1])
-
-    return jsonify(zip=weatherd)
-
-@app.post('/post')
-def test():
-    input = request.json.get('input')
-    current_app.logger.debug(input)
-    print(input)
-
-    return jsonify(input=input)
+    for i in range(object_list_len):
+        simbad = simbad+"name: "+(box[i][1])+"coord: "+(box[i][3])+"mag: "+(box[i][6])
+    
+    return jsonify(name2=simbad)
 
 
 # because backend and frontend use different ports, we have to enable cross-origin requests

@@ -21,6 +21,7 @@ function App(props) {
   const [text, setText] = useState('');
   const [zip, setZip] = useState('');
   const [input, setInput] = useState('');
+  const [name2, setName2] = useState('');
 
   const onChange = e => {
     setText(e.target.value)
@@ -35,6 +36,14 @@ function App(props) {
         setZip(json.zip)
         console.log(json.input)
         setInput(json.input)
+      }
+    )
+
+    POST('/post2', {name2: text}).then(
+      async (resp) => {
+        const json= await resp.json()
+        console.log(json.name2)
+        setName2(json.name2)
       }
     )
   }
@@ -56,6 +65,23 @@ function App(props) {
     <input type="submit" value="Submit" onClick={onClick} />
     </form>
     <p>Hourly Weather Report for the next 48 hours: <b>{zip}</b></p>
+    <p>Objects that can be seen: <b>{name2}</b></p>
+    {/* <table>
+        <tr>
+          <th>Name</th>
+          <th>Coordinate</th>
+          <th>Magnitude</th>
+        </tr>
+        {json.loads(name2).map((val, key) => {
+          return (
+            <tr key={key}>
+              <td>{val.name}</td>
+              <td>{val.coord}</td>
+              <td>{val.mag}</td>
+            </tr>
+          )
+        })}
+      </table> */}
     </header>
     </div>
     )
