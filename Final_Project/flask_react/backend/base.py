@@ -33,10 +33,12 @@ def testPost():
 
     # db.key.insert_one ({ "_id": 10, "item": "box", "qty": 20 })
 
-
-
+    db_keys = client['private_keys']
+    keys = db_keys['keys']
+    key_virtualearth = keys.find_one({"_id": "virtualearth"})
+    key = key_virtualearth["key"]
     postalCode = str(zip)
-    map_url="https://dev.virtualearth.net/REST/v1/Locations/US/"+postalCode+"?&key=Ag8WDTJmVQA6MknifiagqrnEH1AaAv3ce03GeTcN2rYX7mbqzxzG31hX0MChiZlC"
+    map_url="https://dev.virtualearth.net/REST/v1/Locations/US/"+postalCode+"?&key="+key
     map = requests.get(map_url)
 
     #print(map.json())  #prints out entire responce
@@ -47,8 +49,10 @@ def testPost():
     lat = str(map.json()['resourceSets'][0]["resources"][0]['bbox'][0])
     lon = str(map.json()['resourceSets'][0]["resources"][0]['bbox'][1])
 
+    key_openweathermap = keys.find_one({"_id": "openweathermap"})
+    key = key_openweathermap["key"]
     weather_exclude = "minutely,daily,alerts" 
-    weather_api_url = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude="+weather_exclude+"&appid=0f4cf3136e2801a4208f7b57cada4f2b"
+    weather_api_url = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude="+weather_exclude+"&appid="+key
     weather = requests.get(weather_api_url)
     i = 0
     weatherd = ""
