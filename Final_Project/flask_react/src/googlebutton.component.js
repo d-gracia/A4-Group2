@@ -39,8 +39,7 @@ class GoogleLoginComponent extends Component {
       emailId: response.profileObj.email,
     };
     this.setState({ userInfo, isLoggedIn: true });
-    // POST('/user_data', {"name": name})
-    POST('/user_data', {email: this.state.userInfo.emailId})
+    POST('/user_data', {name: userInfo.name, email: userInfo.emailId})
   };
 
   // Error Handler

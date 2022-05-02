@@ -113,16 +113,23 @@ def user_data():
     email = request.json.get('email')
     current_app.logger.debug(email)
     print(email)
+    name = request.json.get('name')
+    current_app.logger.debug(name)
+    print(name)
 
     # Put the user data into the mongo database
     uri = "mongodb+srv://cluster0.2tsfg.mongodb.net/api_key_test?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
     client = MongoClient(uri,
                         tls=True,
-                        tlsCertificateKeyFile='/Users/davidgracia/A4-Group2/Final_Project/flask_react/backend/admin_user.pem',
+                        tlsCertificateKeyFile='/Users/davidgracia/admin_user.pem',
                         server_api=ServerApi('1'))
     db = client['api_key_test']
     collection = db['user_data']
-    collection.insert_one({"EmailID": email})
+    collection.insert_one(
+   {
+    "_id": email,
+     "Name": name,
+   })
 
     return jsonify(email=email)
 
