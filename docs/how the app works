@@ -18,3 +18,5 @@ The string that contains weather information is displayed.
 The string that contains object information is parsed and stored in a list of dictionaries to create a table. The table created is displayed.
 
 Usage of DB:
+- Store user's id (email address) and name
+- Store keys

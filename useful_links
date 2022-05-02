@@ -17,3 +17,5 @@ connecting mongo to flask: https://www.mongodb.com/compatibility/setting-up-flas
 mongo functions: https://pythonbasics.org/flask-mongodb/#MongoDB-example
 
 mongodb schema, etc.: https://www.mongodb.com/developer/how-to/flask-python-mongodb/
+
+update a list of data in mongodb: https://kb.objectrocket.com/mongo-db/how-to-add-elements-into-an-array-in-mongodb-1195
