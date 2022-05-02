@@ -125,11 +125,12 @@ def user_data():
                         server_api=ServerApi('1'))
     db = client['api_key_test']
     collection = db['user_data']
-    collection.insert_one(
-   {
-    "_id": email,
-     "Name": name,
-   })
+
+    if (collection.find_one({"_id": email})):
+        print("Found Exisitng User")
+    else:
+        print("Making New User")
+        collection.insert_one({"_id": email, "Name": name,})
 
     return jsonify(email=email)
 
