@@ -47,6 +47,7 @@ def testPost():
     while i < 48:
         if i == 10 or i ==20 or i==30 or i==40:
             found_a_string = False
+            go = ""
             for item in go:    
                 if item in weather.json()["hourly"][i]["weather"][0]["description"]:
                     found_a_string = True
