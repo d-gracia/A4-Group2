@@ -13,3 +13,4 @@ Store it as one long string and return.
 The string returned goes to the frontend.
 In the frontend side, parse the string and put each piece into a list of dictionaries to create a table to display.
 
+Usage of DB:
