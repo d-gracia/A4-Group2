@@ -54,27 +54,54 @@ def testPost():
     weather_exclude = "minutely,daily,alerts" 
     weather_api_url = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude="+weather_exclude+"&appid="+key
     weather = requests.get(weather_api_url)
+
     i = 0
     weatherd = ""
     while i < 48:
-        if i == 10 or i ==20 or i==30 or i==40:
+       weatherd = weatherd + "Weather in " + str(i) + " hour(s): " + weather.json()["hourly"][i]["weather"][0]["description"] + ".  "
+       i += 1
+    
+    # weatherd= weather.json()["hourly"][5]["weather"][0]["description"] + " " + weather.json()["hourly"][0]["weather"][0]["description"]
+    print("\n" + "Current Weather: " + weather.json()["current"]["weather"][0]["description"] + "\n")
+
+    return jsonify(zip=weatherd)
+
+@app.post('/post3')
+def testPost3():
+    name3 = request.json.get('name3')
+    current_app.logger.debug(name3)
+    print(str(name3))
+
+    postalCode = str(name3)
+    map_url="https://dev.virtualearth.net/REST/v1/Locations/US/"+postalCode+"?&key=Ag8WDTJmVQA6MknifiagqrnEH1AaAv3ce03GeTcN2rYX7mbqzxzG31hX0MChiZlC"
+    map = requests.get(map_url)
+
+    #print(map.json())  #prints out entire responce
+    print("\n")
+    print(map.json()['resourceSets'][0]["resources"][0]['bbox'][0]) #prints out just the 'latitude' value
+    print(map.json()['resourceSets'][0]["resources"][0]['bbox'][1]) #prints out just the 'longitude' value
+
+    lat = str(map.json()['resourceSets'][0]["resources"][0]['bbox'][0])
+    lon = str(map.json()['resourceSets'][0]["resources"][0]['bbox'][1])
+
+    weather_exclude = "minutely,daily,alerts" 
+    weather_api_url = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude="+weather_exclude+"&appid=0f4cf3136e2801a4208f7b57cada4f2b"
+    weather = requests.get(weather_api_url)
+    #weather = session.get('weather', None)
+    go = ["clear skys" , "few clouds"] 
+    hours = [10,20,30,40]
+    recs= ''
+    for i in hours:
             found_a_string = False
-            go = ""
             for item in go:    
                 if item in weather.json()["hourly"][i]["weather"][0]["description"]:
                     found_a_string = True
 
             if found_a_string:
-                weatherd = weatherd + "Weather in " + str(i) + " hour(s): " + weather.json()["hourly"][i]["weather"][0]["description"] + ".  " + "\n" + "Viewing Reccomendations: Today may be a good day to view stars!"
+                 recs = recs + " In " + str(i) + " hours " + "may be a good time to view stars!"
             else:
-                weatherd = weatherd + "Weather in " + str(i) + " hour(s): " + weather.json()["hourly"][i]["weather"][0]["description"] + ".  " + "\n" + "Viewing Reccomendations: Depending on the current weather, we do not reccomend going to view stars."
-        else:
-            weatherd = weatherd + "Weather in " + str(i) + " hour(s): " + weather.json()["hourly"][i]["weather"][0]["description"] + ".  "
-        i += 1
-    # weatherd= weather.json()["hourly"][5]["weather"][0]["description"] + " " + weather.json()["hourly"][0]["weather"][0]["description"]
-    print("\n" + "Current Weather: " + weather.json()["current"]["weather"][0]["description"] + "\n")
-
-    return jsonify(zip=weatherd)
+                 recs =recs + " In " + str(i) + " hours, " +"we do not reccomend going to view stars."
+    return jsonify(name3=recs)    
 
 @app.post('/post2')
 def testPost2():
@@ -107,6 +134,8 @@ def testPost2():
         simbad = simbad+(box[i][1])+"_"+(box[i][3])+"_"+(box[i][6])+"_"
     
     return jsonify(zip2=simbad)
+
+
 
 @app.post('/user_data')
 def user_data():

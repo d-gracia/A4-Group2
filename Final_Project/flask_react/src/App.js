@@ -38,6 +38,7 @@ function App(props) {
   const [zip, setZip] = useState('');
   const [input, setInput] = useState('');
   const [zip2, setZip2] = useState('');
+  const [name3, setName3] = useState('');
 
   const onChange = e => {
     setText(e.target.value)
@@ -60,6 +61,14 @@ function App(props) {
         const json= await resp.json()
         console.log(json.zip2)
         setZip2(json.zip2)
+      }
+    )
+
+    POST('/post3', {name3: text}).then(
+      async (resp) => {
+        const json= await resp.json()
+        console.log(json.name3)
+        setName3(json.name3)
       }
     )
   }
@@ -97,6 +106,7 @@ function App(props) {
           )
         })}
       </table>  
+      <p>Viewing Reccomendation:<b>{name3}</b> </p>   
     </header>
     </div>
     )
