@@ -1,3 +1,5 @@
+from flask_pymongo import PyMongo
+import flask
 from flask import Flask, render_template
 from flask import request
 import requests
@@ -7,27 +9,29 @@ from flask_cors import CORS
 from pymongo import MongoClient
 from pymongo.server_api import ServerApi
 
-uri = "mongodb+srv://cluster0.2tsfg.mongodb.net/api_key_test?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
-
-client = MongoClient(uri, tls=True, tlsCertificateKeyFile='/Users/davidgracia/A4-Group2/Final_Project/flask_react/backend/admin_user.pem', server_api=ServerApi('1'))
-db = client['api_key_test']
-collection = db['key']
-
-doc_count = collection.count_documents({})
-print(doc_count)
-
 app = Flask(__name__)
 
 @app.post('/post')
 def testPost():
-    name = request.json.get('name')
-    current_app.logger.debug(name)
-    print("\n" + "Input: " + name)
+    zip = request.json.get('zip')
+    current_app.logger.debug(zip)
+    print("\n" + "Input: " + zip)
     # input = request.json.get('input')
     # current_app.logger.debug(input)
     # print("\n" + "Input: " + input)
 
-    postalCode = str(name)
+    uri = "mongodb+srv://cluster0.2tsfg.mongodb.net/api_key_test?authSource=%24external&authMechanism=MONGODB-X509&retryWrites=true&w=majority"
+    client = MongoClient(uri,
+                        tls=True,
+                        tlsCertificateKeyFile='/Users/davidgracia/A4-Group2/Final_Project/flask_react/backend/admin_user.pem',
+                        server_api=ServerApi('1'))
+    db = client['api_key_test']
+    collection = db['weather_test']
+    collection.insert_one({"Zipcode": zip})
+
+    # db.key.insert_one ({ "_id": 10, "item": "box", "qty": 20 })
+
+    postalCode = str(zip)
     map_url="https://dev.virtualearth.net/REST/v1/Locations/US/"+postalCode+"?&key=Ag8WDTJmVQA6MknifiagqrnEH1AaAv3ce03GeTcN2rYX7mbqzxzG31hX0MChiZlC"
     map = requests.get(map_url)
 
@@ -96,7 +100,7 @@ def testPost():
         print(box[i][1])
         starlist = starlist + str(box[i][1])
 
-    return jsonify(name=starlist)
+    return jsonify(zip=weatherd)
 
 @app.post('/post')
 def test():

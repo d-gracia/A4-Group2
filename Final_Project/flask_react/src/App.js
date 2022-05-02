@@ -19,7 +19,7 @@ function POST(path, data) {
 
 function App(props) {
   const [text, setText] = useState('');
-  const [name, setName] = useState('');
+  const [zip, setZip] = useState('');
   const [input, setInput] = useState('');
 
   const onChange = e => {
@@ -28,11 +28,11 @@ function App(props) {
 
   const onClick = e => {
     e.preventDefault();
-    POST('/post', {name: text}).then(
+    POST('/post', {zip: text}).then(
       async (resp) => {
         const json= await resp.json()
-        console.log(json.name)
-        setName(json.name)
+        console.log(json.zip)
+        setZip(json.zip)
         console.log(json.input)
         setInput(json.input)
       }
@@ -55,7 +55,7 @@ function App(props) {
     <input value={text} onChange={onChange} />
     <input type="submit" value="Submit" onClick={onClick} />
     </form>
-    <p>Hourly Weather Report for the next 48 hours: <b>{name}</b></p>
+    <p>Hourly Weather Report for the next 48 hours: <b>{zip}</b></p>
     </header>
     </div>
     )
