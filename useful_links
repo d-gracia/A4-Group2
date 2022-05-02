@@ -15,3 +15,5 @@ Google auth login button in flask: https://www.freakyjolly.com/google-signin-log
 connecting mongo to flask: https://www.mongodb.com/compatibility/setting-up-flask-with-mongodb
 
 mongo functions: https://pythonbasics.org/flask-mongodb/#MongoDB-example
+
+mongodb schema, etc.: https://www.mongodb.com/developer/how-to/flask-python-mongodb/
