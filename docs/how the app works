@@ -1,16 +1,20 @@
 The user can login with google. (The user also can use the app as guest.)
-When the user enters their zip code, it goes to the backend server. 
+When the user enters their zip code and clicks the submit button, it goes to the backend server. 
 
-How the app works with map api and display weather information:
+Backend:
+How the app works with map api and weather api:
 Using map api and the given zip code, get latitude and longitude. (The values are stored in the backend.) 
 By using the latitude and logitude values and a weather api, get hourly weather report for the next 48 hours, which is stored as one long string and returned.
 The string returned goes to the frontend.
 
-How the app works with Simbad api and display objects that can be seen:
+How the app works with Simbad api:
 Using the latitude and longitude values from the map api, calculate right ascension and declination coordinates.
 Using Simbad api and the coordinates computed, get objects that can be seen and their information.
 Store it as one long string and return.
 The string returned goes to the frontend.
-In the frontend side, parse the string and put each piece into a list of dictionaries to create a table to display.
+
+Frontend:
+The string that contains weather information is displayed.
+The string that contains object information is parsed and stored in a list of dictionaries to create a table. The table created is displayed.
 
 Usage of DB:
