@@ -70,8 +70,8 @@ def testPost():
 
 @app.post('/post2')
 def testPost2():
-    name2 = request.json.get('name2')
-    current_app.logger.debug(name2)
+    zip2 = request.json.get('zip2')
+    current_app.logger.debug(zip2)
     
     # Simbad API
     ramin=  "0"
@@ -93,16 +93,12 @@ def testPost2():
             box[i][j] = test[j]
     
     
-    # dictionary = {}
-    # for i in range(object_list_len):
-    #     obj = {'name': box[i][1], 'coord': box[i][3], 'mag': box[i][6]}
-    #     dictionary.update(obj)
     simbad = ""
     # 1 for ident, 3 for coords, 6 for V-Mag
     for i in range(object_list_len):
-        simbad = simbad+"name: "+(box[i][1])+"coord: "+(box[i][3])+"mag: "+(box[i][6])
+        simbad = simbad+(box[i][1])+"_"+(box[i][3])+"_"+(box[i][6])+"_"
     
-    return jsonify(name2=simbad)
+    return jsonify(zip2=simbad)
 
 
 # because backend and frontend use different ports, we have to enable cross-origin requests

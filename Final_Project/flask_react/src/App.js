@@ -17,11 +17,27 @@ function POST(path, data) {
   )
 }
 
+function callData(str) {
+  var data = [];
+  var parseArray = str.split('_')
+  let i = 0
+  while (i < parseArray.length) {
+    var dict = {};
+    dict['name']=parseArray[i]
+    dict['coord']=parseArray[i+1]
+    dict['mag']=parseArray[i+2]
+    data.push(dict)
+    i=i+3
+  }
+ 
+  return data
+}
+
 function App(props) {
   const [text, setText] = useState('');
   const [zip, setZip] = useState('');
   const [input, setInput] = useState('');
-  const [name2, setName2] = useState('');
+  const [zip2, setZip2] = useState('');
 
   const onChange = e => {
     setText(e.target.value)
@@ -39,11 +55,11 @@ function App(props) {
       }
     )
 
-    POST('/post2', {name2: text}).then(
+    POST('/post2', {zip2: text}).then(
       async (resp) => {
         const json= await resp.json()
-        console.log(json.name2)
-        setName2(json.name2)
+        console.log(json.zip2)
+        setZip2(json.zip2)
       }
     )
   }
@@ -65,14 +81,13 @@ function App(props) {
     <input type="submit" value="Submit" onClick={onClick} />
     </form>
     <p>Hourly Weather Report for the next 48 hours: <b>{zip}</b></p>
-    <p>Objects that can be seen: <b>{name2}</b></p>
-    {/* <table>
+    <table>
         <tr>
           <th>Name</th>
           <th>Coordinate</th>
           <th>Magnitude</th>
         </tr>
-        {json.loads(name2).map((val, key) => {
+        {callData(zip2).map((val, key) => {
           return (
             <tr key={key}>
               <td>{val.name}</td>
@@ -81,7 +96,7 @@ function App(props) {
             </tr>
           )
         })}
-      </table> */}
+      </table>  
     </header>
     </div>
     )
