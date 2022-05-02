@@ -31,7 +31,18 @@ def testPost():
     i = 0
     weatherd = ""
     while i < 48:
-        weatherd = weatherd + "Weather in " + str(i) + " hour(s): " + weather.json()["hourly"][i]["weather"][0]["description"] + ".  "
+        if i == 10 or i ==20 or i==30 or i==40:
+            found_a_string = False
+            for item in go:    
+                if item in weather.json()["hourly"][i]["weather"][0]["description"]:
+                    found_a_string = True
+
+            if found_a_string:
+                weatherd = weatherd + "Weather in " + str(i) + " hour(s): " + weather.json()["hourly"][i]["weather"][0]["description"] + ".  " + "\n" + "Viewing Reccomendations: Today may be a good day to view stars!"
+            else:
+                weatherd = weatherd + "Weather in " + str(i) + " hour(s): " + weather.json()["hourly"][i]["weather"][0]["description"] + ".  " + "\n" + "Viewing Reccomendations: Depending on the current weather, we do not reccomend going to view stars."
+        else:
+            weatherd = weatherd + "Weather in " + str(i) + " hour(s): " + weather.json()["hourly"][i]["weather"][0]["description"] + ".  "
         i += 1
     # weatherd= weather.json()["hourly"][5]["weather"][0]["description"] + " " + weather.json()["hourly"][0]["weather"][0]["description"]
     print("\n" + "Current Weather: " + weather.json()["current"]["weather"][0]["description"] + "\n")
