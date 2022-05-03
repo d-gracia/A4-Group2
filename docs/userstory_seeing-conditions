@@ -13,3 +13,8 @@ To see the light pollution in a given area, start a light pollution query.  Sear
 (city/town/etc.) or by coordinates in latitude, longitude format.  To check the weather in your area, start a weather query.  
 To enable notifications for good seeing conditions, set a notification with necessary weather conditions filters.
 
+
+Revised version of this user story:
+The app doesn't check for the light pollution. Instead, the app gets weather information 
+based on user's location (latitude and longitude) and displays an hourly weather report 
+for the next 48 hours so that the user can decide when to view objects.
