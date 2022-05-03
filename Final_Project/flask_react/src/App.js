@@ -17,28 +17,63 @@ function POST(path, data) {
   )
 }
 
+/* 
+  function callData parses weatherd string into
+  a list of dictionaries
+*/
 function callData(str) {
   var data = [];
   var parseArray = str.split('_')
+  var dict = {};
+    dict['hours']="Hours"
+    dict['weather']="Weather"
+    data.push(dict)
   let i = 0
   while (i < parseArray.length) {
-    var dict = {};
-    dict['name']=parseArray[i]
-    dict['coord']=parseArray[i+1]
-    dict['mag']=parseArray[i+2]
-    data.push(dict)
-    i=i+3
+    var dict2 = {};
+    dict2['hours']=parseArray[i]
+    dict2['weather']=parseArray[i+1]
+    data.push(dict2)
+    i=i+2
   }
- 
   return data
 }
 
+/* 
+  function callData2 parses simbad string into
+  a list of dictionaries
+*/
+function callData2(str) {
+  var data2 = [];
+  var parseArray = str.split('_')
+  var dict = {};
+    dict['name']="Name"
+    dict['coord']="Coordinates"
+    dict['mag']="Magnitude"
+  data2.push(dict)
+  let i = 0
+  while (i < parseArray.length) {
+    var dict2 = {};
+    dict2['name']=parseArray[i]
+    dict2['coord']=parseArray[i+1]
+    dict2['mag']=parseArray[i+2]
+    data2.push(dict2)
+    i=i+3
+  }
+  return data2
+}
+
+/*
+  function App sends user input to the frontend, 
+  gets back data from the frontend, and displays on the app.
+*/
 function App(props) {
   const [text, setText] = useState('');
   const [zip, setZip] = useState('');
   const [input, setInput] = useState('');
   const [zip2, setZip2] = useState('');
   const [name3, setName3] = useState('');
+  const [email, setEmail] = useState('');
 
   const onChange = e => {
     setText(e.target.value)
@@ -85,18 +120,31 @@ function App(props) {
     {/* <div>
     <input value={input} onChange={onChange} />
     </div> */}
-    <label>Enter Your Zip/Postal code here ~~~ </label>
+    <label>Enter Your Zip/Postal code and magnitude limit here </label>
+    <p>Add a ",x" to the end of zipcode where x is the magnitude limit for your search</p>
+    <p>We reccomend a magnitude limit of 6 or less if viewing with your naked eyes</p>
+    <p>ex) 02134,6</p>
     <input value={text} onChange={onChange} />
     <input type="submit" value="Submit" onClick={onClick} />
     </form>
-    <p>Hourly Weather Report for the next 48 hours: <b>{zip}</b></p>
+    <p>Hourly Weather Report for the next 48 hours:</p>
     <table>
         <tr>
-          <th>Name</th>
-          <th>Coordinate</th>
-          <th>Magnitude</th>
         </tr>
-        {callData(zip2).map((val, key) => {
+        {callData(zip).map((val, key) => {
+          return (
+            <tr key={key}>
+              <td>{val.hours}</td>
+              <td>{val.weather}</td>
+            </tr>
+          )
+        })}
+      </table> 
+    <p>Objects that can be seen:</p>
+    <table>
+        <tr>
+        </tr>
+        {callData2(zip2).map((val, key) => {
           return (
             <tr key={key}>
               <td>{val.name}</td>

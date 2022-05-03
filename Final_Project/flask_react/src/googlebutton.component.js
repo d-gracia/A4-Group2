@@ -4,8 +4,7 @@ import './App.css';
 import React, { Component } from "react";
 import { GoogleLogin, GoogleLogout } from "react-google-login";
 
-const CLIENT_ID =   
-  "239855063895-e9ogr77ne089crdv675k8antmal00r6l.apps.googleusercontent.com";
+const CLIENT_ID = "239855063895-e9ogr77ne089crdv675k8antmal00r6l.apps.googleusercontent.com";
 
 function POST(path, data) {
   return fetch(`http://localhost:5000${path}`,
@@ -65,7 +64,6 @@ class GoogleLoginComponent extends Component {
             <div>
               
               <h1>Welcome, {this.state.userInfo.name}</h1>
-
 
               <GoogleLogout
                 clientId={CLIENT_ID}
