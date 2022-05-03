@@ -15,6 +15,6 @@ To enable notifications for good seeing conditions, set a notification with nece
 
 
 Revised version of this user story:
-The app doesn't check for the light pollution. Instead, the app gets weather information 
-based on user's location (latitude and longitude) and displays an hourly weather report 
-for the next 48 hours so that the user can decide when to view objects.
+Because we couldn't find any light pollution apis, the app will not check for the light pollution. 
+Instead, the app gets weather information based on user's location (latitude and longitude) and 
+displays an hourly weather report for the next 48 hours so that the user can decide when to view objects.
