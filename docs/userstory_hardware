@@ -16,3 +16,13 @@ During a regular query (check normal output user story),
 hardware that is required to view an object should be listed next
 to each object by default.  To only see objects that can be viewed 
 with certain hardware, set a hardware filter during a regular user query. 
+
+
+Revised version of this user story:
+As a user, I want to choose what hardware I will use to see objects in advance
+since I don't want to see a long list of objects that can only be viewed with 
+certain hardware I cannot access. When the user enters their zip code,
+they can also choose what hardware they want to use. Hardware options are
+simplified to two: naked eyes and telescope. When the user inputs n(naked eyes),
+the app returns objects that has a magnitude of 6 or less only. When the user inputs 
+t(telescope), the app returns objects that has a magnitude of 10 or less only.

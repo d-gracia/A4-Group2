@@ -9,3 +9,11 @@ objects are visible in the night sky at that time and location.
 The app can then use the list of possible objects as well as data 
 from weather and light pollution apis to find what objects would be 
 optimal for viewing at the time and location. 
+
+
+Revised version of this user story:
+The app will get the location of the user from the user inputting 
+a zip code. The app will use this and map api to get user's location as 
+latitude and longitude. By sending latitude and longitude values to 
+weather api, the app gets hourly weather report, so it is not
+necessary to take time information from the user anymore.

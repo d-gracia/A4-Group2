@@ -17,28 +17,61 @@ function POST(path, data) {
   )
 }
 
+/* 
+  function callData parses weatherd string into
+  a list of dictionaries
+*/
 function callData(str) {
   var data = [];
   var parseArray = str.split('_')
+  var dict = {};
+    dict['hours']="Hours"
+    dict['weather']="Weather"
+    data.push(dict)
   let i = 0
   while (i < parseArray.length) {
-    var dict = {};
-    dict['name']=parseArray[i]
-    dict['coord']=parseArray[i+1]
-    dict['mag']=parseArray[i+2]
-    data.push(dict)
-    i=i+3
+    var dict2 = {};
+    dict2['hours']=parseArray[i]
+    dict2['weather']=parseArray[i+1]
+    data.push(dict2)
+    i=i+2
   }
- 
   return data
 }
 
+/* 
+  function callData2 parses simbad string into
+  a list of dictionaries
+*/
+function callData2(str) {
+  var data2 = [];
+  var parseArray = str.split('_')
+  var dict = {};
+    dict['name']="NAME"
+    dict['coord']="Coordinates"
+    dict['mag']="Magnitude"
+  data2.push(dict)
+  let i = 0
+  while (i < parseArray.length) {
+    var dict2 = {};
+    dict2['name']=parseArray[i]
+    dict2['coord']=parseArray[i+1]
+    dict2['mag']=parseArray[i+2]
+    data2.push(dict2)
+    i=i+3
+  }
+  return data2
+}
+
+/*
+  function App sends user input to the frontend, 
+  gets back data from the frontend, and displays on the app.
+*/
 function App(props) {
   const [text, setText] = useState('');
-  const [name, setName] = useState('');
-  const [name2, setName2] = useState('');
-  const [name3, setName3] = useState('');
-
+  const [zip, setZip] = useState('');
+  const [input, setInput] = useState('');
+  const [zip2, setZip2] = useState('');
 
   const onChange = e => {
     setText(e.target.value)
@@ -46,27 +79,21 @@ function App(props) {
 
   const onClick = e => {
     e.preventDefault();
-    POST('/post', {name: text}).then(
+    POST('/post', {zip: text}).then(
       async (resp) => {
         const json= await resp.json()
-        console.log(json.name)
-        setName(json.name)
+        console.log(json.zip)
+        setZip(json.zip)
+        console.log(json.input)
+        setInput(json.input)
       }
     )
 
-    POST('/post2', {name2: text}).then(
+    POST('/post2', {zip2: text}).then(
       async (resp) => {
         const json= await resp.json()
-        console.log(json.name2)
-        setName2(json.name2)
-      }
-    )
-
-    POST('/post3', {name3: text}).then(
-      async (resp) => {
-        const json= await resp.json()
-        console.log(json.name3)
-        setName3(json.name3)
+        console.log(json.zip2)
+        setZip2(json.zip2)
       }
     )
   }
@@ -80,20 +107,34 @@ function App(props) {
     <div className="Auth">
         <GoogleLoginComponent />
     </div>
-       
-    <label>Enter Your Zip/Postal code here ~~~ </label>
+    {/* <div>
+    <input value={input} onChange={onChange} />
+    </div> */}
+    <p>Please enter your postal code.</p> 
+    <p>To view objects with your naked eye, add ",n" at the end.</p>
+    <p>To view objects with a telescope, add ",t" at the end. </p>
+    <p>ex) 02134,n</p>
     <input value={text} onChange={onChange} />
     <input type="submit" value="Submit" onClick={onClick} />
     </form>
-    <p>Hourly Weather Report for the next 48 hours: <b>{name}</b></p>
-    <p>Objects that can be seen: </p>
-      <table>
+    <p>Hourly Weather Report for the next 48 hours:</p>
+    <table>
         <tr>
-          <th>Name</th>
-          <th>Coordinate</th>
-          <th>Magnitude</th>
         </tr>
-        {callData(name2).map((val, key) => {
+        {callData(zip).map((val, key) => {
+          return (
+            <tr key={key}>
+              <td>{val.hours}</td>
+              <td>{val.weather}</td>
+            </tr>
+          )
+        })}
+      </table> 
+    <p>Objects that can be seen:</p>
+    <table>
+        <tr>
+        </tr>
+        {callData2(zip2).map((val, key) => {
           return (
             <tr key={key}>
               <td>{val.name}</td>
@@ -102,8 +143,7 @@ function App(props) {
             </tr>
           )
         })}
-      </table> 
-    <p>Viewing Reccomendation:<b>{name3}</b> </p>   
+      </table>  
     </header>
     </div>
     )
