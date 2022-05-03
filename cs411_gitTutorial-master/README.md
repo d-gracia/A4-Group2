@@ -1,12 +1,5 @@
-This should just work but if you get this error: "Dev Server has been initialized using an options object that does not match the API schema.
- - options.allowedHosts[0] should be a non-empty string." Then follow these steps...
+This folder represents the state of our project right up until we created the Fianl Project folder.
 
-1. Go to the package.json file and make sure it has "react-scripts": "4.0.3" and not "react-scripts": "5.0.1"
+We were still actively using this folder to run test code to be implemented in the final project.  This was sort of a "save state" that we knew worked so if we messed anything up we could revert to an earlier version that worked.
 
-2. Delete the node_modules folder
-
-3. do "npm install" in terminal
-
-4. do "npm start"
-
-5. If still not working change "react-scripts": "4.0.3" to "react-scripts": "5.0.1" and try again
+Vice-versa we also used this as a sort of sandbox to mess around with so we could break it and not break our final project.  Therefore, it is a bit messy in here, but it is intended to be that way :)
