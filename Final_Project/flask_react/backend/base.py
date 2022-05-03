@@ -22,7 +22,7 @@ def testPost():
     # current_app.logger.debug(input)
     # print("\n" + "Input: " + input)
 
-    # parse user input to extract postalCode
+    # Parse user input to extract postalCode
     postalCode = str(zip)
     list = postalCode.split(",")
     postalCode = str(list[0])
@@ -42,11 +42,12 @@ def testPost():
     keys = db_keys['keys']
     key_virtualearth = keys.find_one({"_id": "virtualearth"})
     key = key_virtualearth["key"]
-
+    
+    # Get latitude and longitude from map API
     map_url="https://dev.virtualearth.net/REST/v1/Locations/US/"+postalCode+"?&key="+key
     map = requests.get(map_url)
 
-    #print(map.json())  #prints out entire responce
+    # Print(map.json())  #prints out entire responce
     print("\n")
     print(map.json()['resourceSets'][0]["resources"][0]['bbox'][0]) #prints out just the 'latitude' value
     print(map.json()['resourceSets'][0]["resources"][0]['bbox'][1]) #prints out just the 'longitude' value
@@ -54,12 +55,13 @@ def testPost():
     lat = str(map.json()['resourceSets'][0]["resources"][0]['bbox'][0])
     lon = str(map.json()['resourceSets'][0]["resources"][0]['bbox'][1])
 
+    # Get weather information from weather API
     key_openweathermap = keys.find_one({"_id": "openweathermap"})
     key = key_openweathermap["key"]
     weather_exclude = "minutely,daily,alerts" 
     weather_api_url = "https://api.openweathermap.org/data/2.5/onecall?lat="+lat+"&lon="+lon+"&exclude="+weather_exclude+"&appid="+key
     weather = requests.get(weather_api_url)
-
+    
     i = 0
     weatherd = ""
     while i < 48:
