@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import axios from "axios";
 import './App.css';
-import { Component } from "react";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import GoogleLoginComponent from "./googlebutton.component";
 
