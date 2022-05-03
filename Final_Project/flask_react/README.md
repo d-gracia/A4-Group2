@@ -1,4 +1,4 @@
-Here is the frontend folder of our project.
+Here is the frontend folder of our final project.
 
 The backend folder holds aanything useful to the backend.
 
