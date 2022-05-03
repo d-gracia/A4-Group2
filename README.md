@@ -15,4 +15,5 @@ The rest of the folders were made throughout the duration of the project and are
 
 5). The Prototype folder.  This folder contains stuff for one of the group assignment deliveravles from a few a weeks ago.  It represents the state of the project at that point in time.  It has been updated a little bit recently for testing purposes.
 
-6). The Docs folder.  
+6). The Docs folder.  This folder contains our initial idea proposals, why we chose flask and react, an overview of how the app works, and all of our user stories.
+
