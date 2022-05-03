@@ -2,8 +2,8 @@ The user can login with google. (The user also can use the app as guest.)
 Once the user logs in, user's email adress and name are stored in a database, and a welcome message with user's name is displayed.
 Login processes are done on a Google OAuth login component created in react. (googlebutton.components.js)
 
-User input: zip code, one of two hardware options (n: naked eyes, t: telescope) 
-Input example) 02134,n
+User input: zip code, limiting stellar magnitude
+Input example) 02134,6
 When the user enters input values and clicks the submit button, the values are sent from the frontend to the backend server. 
 
   Backend:
