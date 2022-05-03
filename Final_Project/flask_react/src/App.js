@@ -73,7 +73,6 @@ function App(props) {
   const [input, setInput] = useState('');
   const [zip2, setZip2] = useState('');
   const [name3, setName3] = useState('');
-  const [email, setEmail] = useState('');
 
   const onChange = e => {
     setText(e.target.value)
@@ -127,6 +126,7 @@ function App(props) {
     <input value={text} onChange={onChange} />
     <input type="submit" value="Submit" onClick={onClick} />
     </form>
+    <p>Viewing Reccomendation:<b>{name3}</b> </p>   
     <p>Hourly Weather Report for the next 48 hours:</p>
     <table>
         <tr>
@@ -154,7 +154,6 @@ function App(props) {
           )
         })}
       </table>  
-      <p>Viewing Reccomendation:<b>{name3}</b> </p>   
     </header>
     </div>
     )
