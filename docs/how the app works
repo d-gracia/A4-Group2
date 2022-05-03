@@ -26,4 +26,5 @@ When the user enters input values and clicks the submit button, the values are s
 
 Usage of DB:
 - Store user's id (email address) and name.
-- Store keys that should be hided.
+- Store user's location (zip code).
+- Store keys that should be hided. (Pull the keys from the database when needed.)
