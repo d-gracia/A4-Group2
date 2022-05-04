@@ -23,7 +23,8 @@ Revised version of this user story:
 A user will be told objects that can be viewed and hourly weather conditions at a given location. The app won't output
 the best time to view objects and will let the user decide when to view them based on hourly weather conditions.
 Login is optional. The user could either log in or just use the app as guest. 
-Since a zip code and one of the two hardware options (naked eyes/telescope) are the only things the app takes from the user,
-the user will no longer be able to search by object names, and the app will not store the user's search history or a list of 
-objects they are interested in viewing.
-The app doesn't check for the light pollution and scenery, but it only considers weather conditions at a given location.
+Since a zip code and one of the limit of magnitude are the only things the app takes from the user,
+the user will no longer be able to search by object names, and the app will not store the user's 
+search history or a list of objects they are interested in viewing.
+The app doesn't check for the light pollution and scenery because we haven't been able to find relevant apis.
+The app just considers weather conditions at a given location.
